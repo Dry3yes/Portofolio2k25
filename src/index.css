@@ -6,8 +6,10 @@ html, body {
   font-family: "Space Grotesk", sans-serif;
   background-color: black;
   color: #f3f3f3;
+  scroll-behavior: smooth; 
 }
 
+/* Animasi custom */
 @layer utilities {
   @keyframes blink {
     0%, 100% {
@@ -22,13 +24,6 @@ html, body {
     animation: blink 0.8s step-end infinite;
   }
 
-  .animate-loading-bar {
-    animation: loading 0.8s ease infinite;
-
-  }
-}
-
-@layer utilities {
   @keyframes loading {
     0% {
       transform: translateX(-100%);
@@ -40,6 +35,5 @@ html, body {
 
   .animate-loading-bar {
     animation: loading 0.8s ease infinite;
-
   }
 }

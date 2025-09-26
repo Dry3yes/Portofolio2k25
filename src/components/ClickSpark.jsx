@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react"
 
 const ClickSpark = ({
-  sparkColor = "white", 
+  sparkColor = "white",
   sparkSize = 15,
   sparkRadius = 30,
   sparkCount = 12,
@@ -13,16 +13,24 @@ const ClickSpark = ({
   const canvasRef = useRef(null)
   const sparksRef = useRef([])
 
+  // Auto resize canvas biar selalu sesuai parent
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
     const parent = canvas.parentElement
     if (!parent) return
 
-    canvas.width = parent.clientWidth
-    canvas.height = parent.clientHeight
+    const resize = () => {
+      canvas.width = parent.clientWidth
+      canvas.height = parent.clientHeight
+    }
+
+    resize()
+    window.addEventListener("resize", resize)
+    return () => window.removeEventListener("resize", resize)
   }, [])
 
+  // Animasi sparks
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -62,6 +70,7 @@ const ClickSpark = ({
     return () => cancelAnimationFrame(animationId)
   }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration])
 
+  // Klik event
   const handleClick = (e) => {
     const canvas = canvasRef.current
     if (!canvas) return
