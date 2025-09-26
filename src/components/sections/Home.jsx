@@ -375,9 +375,10 @@ const Home = () => {
               lineHeight: "1.1", 
               maxWidth: "900px",
               margin: "0",
-              textAlign: "center",
+              textAlign: "center", 
+               whiteSpace: "nowrap"
             }}>
-              <span style={{ color: "white" }}>Software Engineer Building</span>{" "}
+              <span style={{ color: "white" }}>Software Engineer Building</span>{" "}<br />
               <span style={{ color: "#8b8b8b" }}>creative & scalable</span><br />
               <span style={{ color: "#8b8b8b" }}>solutions</span>
               
