@@ -1,147 +1,7 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
-const ProjectCard = ({ title, year, description, image, link }) => {
-  const cardContent = (
-    <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-      {/* Kotak gambar */}
-      <div
-        style={{
-          backgroundColor: "#1a1a1a",
-          border: "1px solid #333",
-          borderRadius: "12px",
-          overflow: "hidden",
-          transition: "all 0.3s",
-          cursor: "pointer",
-          minHeight: "220px",
-        }}
-      >
-        {image && (
-          <img
-            src={image}
-            alt={title}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
-        )}
-      </div>
-
-      {/* Info di bawah gambar */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
-          fontSize: "0.9rem",
-          color: "#aaa",
-        }}
-      >
-        <span style={{ maxWidth: "80%" }}>
-          <strong style={{ color: "white" }}>{title}</strong> — {description}
-        </span>
-        <span>{year}</span>
-      </div>
-    </div>
-  );
-
-  // 🔑 Kalau ada link → bungkus <Link>, kalau enggak tampil biasa
-  return link ? (
-    <Link to={link} style={{ textDecoration: "none" }}>
-      {cardContent}
-    </Link>
-  ) : (
-    cardContent
-  );
-};
-
-const CertificateCard = ({ title, year, image }) => (
-  <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-    <div
-      style={{
-        backgroundColor: "#1a1a1a",
-        border: "1px solid #333",
-        borderRadius: "12px",
-        overflow: "hidden",
-        transition: "all 0.3s",
-        cursor: "pointer",
-        minHeight: "200px",
-      }}
-    >
-      {image && (
-        <img
-          src={image}
-          alt={title}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
-      )}
-    </div>
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-        fontSize: "0.9rem",
-        color: "#aaa",
-      }}
-    >
-      <span>
-        <strong style={{ color: "white" }}>{title}</strong>
-      </span>
-      <span>{year}</span>
-    </div>
-  </div>
-);
-
-const Projects = () => {
-  const projectList = [
-    {
-      title: "Foodhub",
-      description: "Foodhub Website for Ordering Food",
-      year: "2025",
-      image: "Foodhub.png",
-      link: "/projects/foodhub", // 🔑 route ke Foodhub.jsx
-    },
-    {
-      title: "Willify",
-      description: "Willify Music Streaming Website",
-      year: "2025",
-      image: "Willify.png",
-    },
-    {
-      title: "UI/UX Portfolio",
-      description: "Showcase of my UI/UX design projects",
-      year: "2025",
-      image: "/images/uiux1.png",
-    },
-    {
-      title: "UI/UX Concept",
-      description: "Additional UI/UX creative works",
-      year: "2025",
-      image: "/images/uiux2.png",
-    },
-  ];
-
-  const certificateList = [
-    {
-      title: "Frontend Development Certificate",
-      year: "2024",
-      image: "/images/cert1.png",
-    },
-    {
-      title: "UI/UX Design Certificate",
-      year: "2024",
-      image: "/images/cert2.png",
-    },
-  ];
-
+const Foodhub = () => {
   return (
     <div
       style={{
@@ -173,7 +33,7 @@ const Projects = () => {
       </button>
 
       {/* Title */}
-      <div style={{ textAlign: "center", marginBottom: "1rem" }}>
+      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
         <h1 style={{ fontSize: "2.5rem", fontWeight: "bold" }}>Projects</h1>
       </div>
       <div
@@ -185,49 +45,122 @@ const Projects = () => {
           margin: "0 auto 2rem auto",
         }}
       ></div>
-      <p style={{ textAlign: "center", color: "#aaa", marginBottom: "3rem" }}>
-        Welcome to my world, where you’ll find all the projects I’ve created.
-      </p>
 
-      {/* Projects Grid */}
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "2rem",
-        }}
-      >
-        {projectList.map((p, i) => (
-          <ProjectCard key={i} {...p} />
-        ))}
+      {/* Project Preview */}
+      <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
+        <img
+          src="/Foodhub.png"
+          alt="Foodhub Project"
+          style={{
+            width: "100%",
+            maxWidth: "800px",
+            borderRadius: "12px",
+            border: "1px solid #333",
+            marginBottom: "2rem",
+          }}
+        />
       </div>
 
-      {/* Certificates Section */}
-      <div style={{ marginTop: "6rem" }}>
+      {/* Project Info */}
+      <div
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          color: "#ccc",
+          lineHeight: "1.6",
+        }}
+      >
         <h2
           style={{
             fontSize: "2rem",
             fontWeight: "bold",
-            textAlign: "center",
-            marginBottom: "2rem",
+            color: "white",
+            marginBottom: "1rem",
           }}
         >
-          Certificates
+          FoodHub
         </h2>
+        <p>
+          Foodhub is a team project where I took on multiple roles as a{" "}
+          <span style={{ color: "red" }}>Developer</span>,{" "}
+          <span style={{ color: "red" }}>UI/UX Designer</span>, and{" "}
+          <span style={{ color: "red" }}>Project Manager</span>. I was
+          responsible for choosing the technologies we used, including{" "}
+          <span style={{ color: "blue" }}>React.js</span> for the frontend and{" "}
+          <span style={{ color: "blue" }}>C#</span> for the backend styled with{" "}
+          <span style={{ color: "blue" }}>CSS</span>. Through this project, I
+          not only strengthened my skills in UI/UX design and frontend
+          development, but also gained valuable experience in managing a project
+          as a PM, ensuring a good user experience and interface for the
+          website.
+        </p>
+
+        {/* Buttons */}
         <div
           style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "2rem",
+            marginTop: "2rem",
+            display: "flex",
+            justifyContent: "flex-end",
+            gap: "1rem",
           }}
         >
-          {certificateList.map((c, i) => (
-            <CertificateCard key={i} {...c} />
-          ))}
+          {/* VIEW PROJECT button */}
+          <a
+            href="https://foodhub-project.vercel.app/landing"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              padding: "0.8rem 2rem",
+              border: "1px solid white",
+              borderRadius: "50px",
+              backgroundColor: "white", // default putih
+              color: "black", // teks hitam
+              fontWeight: "bold",
+              cursor: "pointer",
+              textDecoration: "none",
+              transition: "all 0.3s",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "black";
+              e.target.style.color = "white";
+              e.target.style.borderColor = "white";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "white";
+              e.target.style.color = "black";
+              e.target.style.borderColor = "white";
+            }}
+          >
+            VIEW PROJECT ↗
+          </a>
+
+          {/* GITHUB button */}
+          <a
+            href="https://github.com/Dry3yes/FoodHub-2025"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              padding: "0.8rem 2rem",
+              border: "1px solid white",
+              borderRadius: "50px",
+              backgroundColor: "transparent",
+              color: "white",
+              fontWeight: "bold",
+              cursor: "pointer",
+              textDecoration: "none",
+              transition: "all 0.3s",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "white";
+              e.target.style.color = "black";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.color = "white";
+            }}
+          >
+            GITHUB ↗
+          </a>
         </div>
       </div>
 
@@ -235,7 +168,7 @@ const Projects = () => {
       <footer
         style={{
           borderTop: "1px solid #333",
-          marginTop: "4rem",
+          marginTop: "6rem",
           padding: "3rem 2rem 2rem",
         }}
       >
@@ -337,11 +270,11 @@ const Projects = () => {
             fontSize: "0.875rem",
           }}
         >
-          Made by Mikolas © 2025
+          Coding with MIKOLAS © 2025
         </div>
       </footer>
     </div>
   );
 };
 
-export default Projects;
+export default Foodhub;

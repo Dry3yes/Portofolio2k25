@@ -6,7 +6,7 @@ html, body {
   font-family: "Space Grotesk", sans-serif;
   background-color: black;
   color: #f3f3f3;
-  scroll-behavior: smooth; 
+  scroll-behavior: auto; 
 }
 
 /* Animasi custom */
@@ -21,7 +21,7 @@ html, body {
   }
 
   .animate-blink {
-    animation: blink 0.8s step-end infinite;
+    animation: blink 0.6s step-end infinite;
   }
 
   @keyframes loading {
@@ -36,4 +36,8 @@ html, body {
   .animate-loading-bar {
     animation: loading 0.8s ease infinite;
   }
+}
+
+.motion-page {
+  will-change: transform, opacity;
 }
