@@ -1,42 +1,67 @@
-import { useState, useEffect } from "react";
+// App.jsx
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
 import "./App.css";
-import { LoadingScreen } from "./components/LoadingScreen";
+
 import Home from "./components/sections/Home";
+import Contact from "./components/sections/Contact";
+import Projects from "./components/sections/Projects";
+import Foodhub from "./components/projects/Foodhub"; // ⬅️ Import Foodhub
+
+function PageWrapper({ children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+      style={{ minHeight: "100vh" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+        <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+        <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
+        <Route path="/projects/foodhub" element={<PageWrapper><Foodhub /></PageWrapper>} /> {/* ⬅️ New */}
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [showHome, setShowHome] = useState(false);
-  
-
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      setTimeout(() => setShowHome(true), 100);
-    }, 6000);
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    });
 
-    return () => clearTimeout(timer);
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   return (
-    <div className="relative w-full h-screen">
-      {/* Loading Screen */}
-      <div
-        className={`absolute w-full h-full transition-opacity duration-1000 ${
-          isLoading ? "opacity-100 z-50" : "opacity-0 -z-10"
-        }`}
-      >
-        <LoadingScreen />
-      </div>
-
-      {/* Home */}
-      <div
-        className={`absolute w-full h-full transition-all duration-1000 ease-in-out transform ${
-          showHome ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-        }`}
-      >
-        <Home />
-      </div>
-    </div>
+    <Router>
+      <AnimatedRoutes />
+    </Router>
   );
 }
 
