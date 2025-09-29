@@ -1,4 +1,3 @@
-// App.jsx
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -8,7 +7,10 @@ import "./App.css";
 import Home from "./components/sections/Home";
 import Contact from "./components/sections/Contact";
 import Projects from "./components/sections/Projects";
-import Foodhub from "./components/projects/Foodhub"; // ⬅️ Import Foodhub
+import About from "./components/sections/About";
+import ScrollToTop from "./components/ScrollToTop";
+import Foodhub from "./components/projects/Foodhub";
+import Willify from "./components/projects/Willify"; 
 
 function PageWrapper({ children }) {
   return (
@@ -33,7 +35,9 @@ function AnimatedRoutes() {
         <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
         <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
-        <Route path="/projects/foodhub" element={<PageWrapper><Foodhub /></PageWrapper>} /> {/* ⬅️ New */}
+        <Route path="/projects/foodhub" element={<PageWrapper><Foodhub /></PageWrapper>} />
+        <Route path="/projects/willify" element={<PageWrapper><Willify /></PageWrapper>} /> {/* ✅ Route Willify */}
+        <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
@@ -60,6 +64,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <AnimatedRoutes />
     </Router>
   );

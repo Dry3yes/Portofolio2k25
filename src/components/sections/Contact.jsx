@@ -109,7 +109,7 @@ const Contact = () => {
           <input
             type="text"
             name="from_name"
-            placeholder="Jokosusanto"
+            placeholder="Ex: Jokosusanto"
             required
             style={{
               backgroundColor: "transparent",
@@ -128,7 +128,7 @@ const Contact = () => {
           <input
             type="email"
             name="reply_to"
-            placeholder="jokosusanto@gmail.com"
+            placeholder="Ex: jokosusanto@gmail.com"
             required
             style={{
               backgroundColor: "transparent",
@@ -161,6 +161,7 @@ const Contact = () => {
         </div>
 
         <div style={{ gridColumn: "span 2", textAlign: "center", marginTop: "2rem" }}>
+          
           <button
             type="submit"
             style={{
@@ -172,13 +173,27 @@ const Contact = () => {
               cursor: "pointer",
               fontWeight: "bold",
               fontSize: "1rem",
+              transition: "all 0.3s",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "#ff0000ff";
+              e.target.style.color = "white";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "white";
+              e.target.style.color = "black";
             }}
           >
             SEND
           </button>
+
           <div style={{ margin: "1rem 0", fontSize: "0.9rem", color: "#999" }}>or</div>
-          <button
-            type="button"
+
+          {/* ✅ CONNECT WITH ME (LinkedIn) */}
+          <a
+            href="https://www.linkedin.com/in/mikolas-p-gultom-85b039310/"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               padding: "1rem 2.5rem",
               backgroundColor: "transparent",
@@ -188,18 +203,22 @@ const Contact = () => {
               cursor: "pointer",
               fontWeight: "500",
               transition: "all 0.3s",
+              textDecoration: "none",
+              display: "inline-block",
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = "rgba(255,255,255,0.1)";
-              e.target.style.borderColor = "#fff";
+              e.target.style.backgroundColor = "white";
+              e.target.style.color = "black";
+              e.target.style.borderColor = "white";
             }}
             onMouseLeave={(e) => {
               e.target.style.backgroundColor = "transparent";
+              e.target.style.color = "white";
               e.target.style.borderColor = "#666";
             }}
           >
             CONNECT WITH ME
-          </button>
+          </a>
         </div>
       </form>
 

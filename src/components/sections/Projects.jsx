@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProjectCard = ({ title, year, description, image, link }) => {
   const cardContent = (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-      {/* Kotak gambar */}
       <div
         style={{
           backgroundColor: "#1a1a1a",
@@ -29,7 +28,6 @@ const ProjectCard = ({ title, year, description, image, link }) => {
         )}
       </div>
 
-      {/* Info di bawah gambar */}
       <div
         style={{
           display: "flex",
@@ -47,7 +45,6 @@ const ProjectCard = ({ title, year, description, image, link }) => {
     </div>
   );
 
-  // 🔑 Kalau ada link → bungkus <Link>, kalau enggak tampil biasa
   return link ? (
     <Link to={link} style={{ textDecoration: "none" }}>
       {cardContent}
@@ -58,7 +55,7 @@ const ProjectCard = ({ title, year, description, image, link }) => {
 };
 
 const CertificateCard = ({ title, year, image }) => (
-  <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+  <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem", marginBottom : "30rem" }}>
     <div
       style={{
         backgroundColor: "#1a1a1a",
@@ -101,32 +98,48 @@ const CertificateCard = ({ title, year, image }) => (
 );
 
 const Projects = () => {
+  const navigate = useNavigate();
+
   const projectList = [
     {
       title: "Foodhub",
       description: "Foodhub Website for Ordering Food",
       year: "2025",
       image: "Foodhub.png",
-      link: "/projects/foodhub", // 🔑 route ke Foodhub.jsx
+      link: "/projects/foodhub",
+    },
+      {
+      title: "Profile Main",
+      description: "My Main Portfolio",
+      year: "2025",
+      image: "/Profile.png",
     },
     {
       title: "Willify",
       description: "Willify Music Streaming Website",
-      year: "2025",
+      year: "2023",
       image: "Willify.png",
+      link: "/projects/willify",
     },
     {
-      title: "UI/UX Portfolio",
-      description: "Showcase of my UI/UX design projects",
-      year: "2025",
-      image: "/images/uiux1.png",
+      title: "NFT - Private",
+      description: "This is one of my private NFT artworks. I only showcase the visual part here, while the blockchain details remain private.",
+      year: "2024",
+      image: "/NFT.png",
     },
     {
-      title: "UI/UX Concept",
-      description: "Additional UI/UX creative works",
-      year: "2025",
-      image: "/images/uiux2.png",
+      title: "Tokohappy",
+      description: "Fashion E-Commerce Website",
+      year: "2024",
+      image: "/Tokohappy.png",
     },
+     {
+      title: "CrypCell",
+      description: "Mobile App UI/UX Design",
+      year: "2024",
+      image: "/Crypto.png",
+    },
+    
   ];
 
   const certificateList = [
@@ -142,6 +155,18 @@ const Projects = () => {
     },
   ];
 
+  const buttonStyle = {
+    backgroundColor: "transparent",
+    border: "1px solid #666",
+    padding: "1rem 2.5rem",
+    borderRadius: "50px",
+    fontSize: "1rem",
+    fontWeight: "500",
+    transition: "all 0.3s",
+    cursor: "pointer",
+    color: "white",
+  };
+
   return (
     <div
       style={{
@@ -152,7 +177,6 @@ const Projects = () => {
         position: "relative",
       }}
     >
-      {/* Back Arrow */}
       <button
         onClick={() => window.history.back()}
         style={{
@@ -172,7 +196,6 @@ const Projects = () => {
         ⟵
       </button>
 
-      {/* Title */}
       <div style={{ textAlign: "center", marginBottom: "1rem" }}>
         <h1 style={{ fontSize: "2.5rem", fontWeight: "bold" }}>Projects</h1>
       </div>
@@ -186,10 +209,9 @@ const Projects = () => {
         }}
       ></div>
       <p style={{ textAlign: "center", color: "#aaa", marginBottom: "3rem" }}>
-        Welcome to my world, where you’ll find all the projects I’ve created.
+        Welcome to my world, where you’ll find all the projects I’ve created. [See more on my GitHub]
       </p>
 
-      {/* Projects Grid */}
       <div
         style={{
           maxWidth: "1200px",
@@ -204,7 +226,6 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Certificates Section */}
       <div style={{ marginTop: "6rem" }}>
         <h2
           style={{
@@ -231,14 +252,7 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer
-        style={{
-          borderTop: "1px solid #333",
-          marginTop: "4rem",
-          padding: "3rem 2rem 2rem",
-        }}
-      >
+      <footer id="contact" style={{ borderTop: "1px solid white", padding: "4rem 2rem 2rem" }}>
         <div
           style={{
             maxWidth: "1200px",
@@ -250,79 +264,64 @@ const Projects = () => {
           }}
         >
           <div>
-            <h2
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-                marginBottom: "1rem",
-              }}
-            >
+            <h2 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1rem", color: "white" }}>
               Drop Me a Message
             </h2>
-            <Link
-              to="/contact"
-              style={{
-                backgroundColor: "transparent",
-                border: "1px solid white",
-                color: "white",
-                padding: "0.8rem 2rem",
-                borderRadius: "50px",
-                cursor: "pointer",
-                fontSize: "0.9rem",
-                transition: "all 0.3s",
-                textDecoration: "none",
-                display: "inline-block",
-              }}
+            <button
+              style={buttonStyle}
+              onClick={() => navigate("/contact")}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = "white";
                 e.target.style.color = "black";
+                e.target.style.borderColor = "white";
               }}
               onMouseLeave={(e) => {
                 e.target.style.backgroundColor = "transparent";
                 e.target.style.color = "white";
+                e.target.style.borderColor = "#666";
               }}
             >
               CONTACT ME ↗
-            </Link>
+            </button>
           </div>
 
           <div>
-            <h3
-              style={{
-                fontSize: "2rem",
-                fontWeight: "bold",
-                marginBottom: "1rem",
-              }}
-            >
+            <h3 style={{ fontSize: "3rem", fontWeight: "600", marginBottom: "1.5rem", color: "white" }}>
               MENU
             </h3>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-                textAlign: "right",
-              }}
-            >
-              {["HOME", "PROJECTS", "ABOUT", "CONTACT"].map((item, i) => {
-                const path = item === "HOME" ? "/" : `/${item.toLowerCase()}`;
-                return (
-                  <Link
-                    key={i}
-                    to={path}
-                    style={{
-                      fontSize: "1.2rem",
-                      textDecoration: "none",
-                      color: "white",
-                      transition: "color 0.3s",
-                    }}
-                    onMouseEnter={(e) => (e.target.style.color = "grey")}
-                    onMouseLeave={(e) => (e.target.style.color = "white")}
-                  >
-                    {item}
-                  </Link>
-                );
-              })}
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <a
+                href="/"
+                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+                onMouseEnter={(e) => (e.target.style.color = "grey")}
+                onMouseLeave={(e) => (e.target.style.color = "white")}
+              >
+                HOME
+              </a>
+              <a
+                href="/projects"
+                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+                onMouseEnter={(e) => (e.target.style.color = "grey")}
+                onMouseLeave={(e) => (e.target.style.color = "white")}
+              >
+                PROJECTS
+              </a>
+              <a
+                href="/about"
+                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+                onMouseEnter={(e) => (e.target.style.color = "grey")}
+                onMouseLeave={(e) => (e.target.style.color = "white")}
+              >
+                ABOUT
+              </a>
+              <a
+                href="/contact"
+                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+                onMouseEnter={(e) => (e.target.style.color = "grey")}
+                onMouseLeave={(e) => (e.target.style.color = "white")}
+              >
+                CONTACT
+              </a>
             </div>
           </div>
         </div>
@@ -332,7 +331,7 @@ const Projects = () => {
             textAlign: "center",
             marginTop: "3rem",
             paddingTop: "2rem",
-            borderTop: "1px solid #333",
+            borderTop: "1px solid white",
             color: "white",
             fontSize: "0.875rem",
           }}
