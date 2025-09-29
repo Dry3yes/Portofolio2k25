@@ -55,7 +55,7 @@ const ProjectCard = ({ title, year, description, image, link }) => {
 };
 
 const CertificateCard = ({ title, year, image }) => (
-  <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem", marginBottom : "30rem" }}>
+  <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
     <div
       style={{
         backgroundColor: "#1a1a1a",
@@ -108,7 +108,7 @@ const Projects = () => {
       image: "Foodhub.png",
       link: "/projects/foodhub",
     },
-      {
+    {
       title: "Profile Main",
       description: "My Main Portfolio",
       year: "2025",
@@ -123,7 +123,8 @@ const Projects = () => {
     },
     {
       title: "NFT - Private",
-      description: "This is one of my private NFT artworks. I only showcase the visual part here, while the blockchain details remain private.",
+      description:
+        "This is one of my private NFT artworks. I only showcase the visual part here, while the blockchain details remain private.",
       year: "2024",
       image: "/NFT.png",
     },
@@ -133,25 +134,24 @@ const Projects = () => {
       year: "2024",
       image: "/Tokohappy.png",
     },
-     {
+    {
       title: "CrypCell",
       description: "Mobile App UI/UX Design",
       year: "2024",
       image: "/Crypto.png",
     },
-    
   ];
 
   const certificateList = [
     {
-      title: "Frontend Development Certificate",
+      title: "BNCC Frontend Development Certificate",
       year: "2024",
-      image: "/images/cert1.png",
+      image: "/Serti1.png",
     },
     {
-      title: "UI/UX Design Certificate",
-      year: "2024",
-      image: "/images/cert2.png",
+      title: "UDEMY - Software Tester Certificate",
+      year: "2025",
+      image: "/SOON.png",
     },
   ];
 
@@ -177,10 +177,11 @@ const Projects = () => {
         position: "relative",
       }}
     >
+      {/* Tombol Back */}
       <button
         onClick={() => window.history.back()}
         style={{
-          position: "absolute",
+          position: "fixed",
           top: "2rem",
           left: "2rem",
           color: "white",
@@ -189,6 +190,7 @@ const Projects = () => {
           fontSize: "2.5rem",
           cursor: "pointer",
           transition: "color 0.3s",
+          zIndex: 200,
         }}
         onMouseEnter={(e) => (e.target.style.color = "grey")}
         onMouseLeave={(e) => (e.target.style.color = "white")}
@@ -196,7 +198,49 @@ const Projects = () => {
         ⟵
       </button>
 
-      <div style={{ textAlign: "center", marginBottom: "1rem" }}>
+      {/* Navigation sama kayak Home */}
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          padding: "2rem",
+          position: "fixed",
+          top: 0,
+          right: 0,
+          zIndex: 100,
+        }}
+      >
+        <div style={{ display: "flex", gap: "2rem", fontSize: "0.875rem", fontWeight: "500" }}>
+          <a href="/" className="nav-link">HOME</a>
+          <a href="/projects" className="nav-link">PROJECTS</a>
+          <a href="/about" className="nav-link">ABOUT</a>
+          <a href="/contact" className="nav-link">CONTACT</a>
+        </div>
+        <style>{`
+          .nav-link {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+          }
+          .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px; 
+            width: 0%;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s;
+          }
+          .nav-link:hover::after {
+            width: 100%;
+          }
+        `}</style>
+      </nav>
+
+      <div style={{ textAlign: "center", marginBottom: "1rem", marginTop: "4rem" }}>
         <h1 style={{ fontSize: "2.5rem", fontWeight: "bold" }}>Projects</h1>
       </div>
       <div
@@ -212,6 +256,7 @@ const Projects = () => {
         Welcome to my world, where you’ll find all the projects I’ve created. [See more on my GitHub]
       </p>
 
+      {/* Project List */}
       <div
         style={{
           maxWidth: "1200px",
@@ -226,6 +271,7 @@ const Projects = () => {
         ))}
       </div>
 
+      {/* Certificates */}
       <div style={{ marginTop: "6rem" }}>
         <h2
           style={{
@@ -252,7 +298,8 @@ const Projects = () => {
         </div>
       </div>
 
-      <footer id="contact" style={{ borderTop: "1px solid white", padding: "4rem 2rem 2rem" }}>
+      {/* Footer */}
+      <footer id="contact" style={{ borderTop: "1px solid white", padding: "4rem 2rem 2rem", marginTop:"300px"}}>
         <div
           style={{
             maxWidth: "1200px",
@@ -269,7 +316,7 @@ const Projects = () => {
             </h2>
             <button
               style={buttonStyle}
-              onClick={() => navigate("/contact")}
+              onClick={() => window.open("https://github.com/Dry3yes", "_blank")}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = "white";
                 e.target.style.color = "black";
@@ -281,7 +328,7 @@ const Projects = () => {
                 e.target.style.borderColor = "#666";
               }}
             >
-              CONTACT ME ↗
+              CHECK MY GITHUB ↗
             </button>
           </div>
 
@@ -290,36 +337,24 @@ const Projects = () => {
               MENU
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <a
-                href="/"
-                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+              <a href="/" style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
                 onMouseEnter={(e) => (e.target.style.color = "grey")}
-                onMouseLeave={(e) => (e.target.style.color = "white")}
-              >
+                onMouseLeave={(e) => (e.target.style.color = "white")}>
                 HOME
               </a>
-              <a
-                href="/projects"
-                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+              <a href="/projects" style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
                 onMouseEnter={(e) => (e.target.style.color = "grey")}
-                onMouseLeave={(e) => (e.target.style.color = "white")}
-              >
+                onMouseLeave={(e) => (e.target.style.color = "white")}>
                 PROJECTS
               </a>
-              <a
-                href="/about"
-                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+              <a href="/about" style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
                 onMouseEnter={(e) => (e.target.style.color = "grey")}
-                onMouseLeave={(e) => (e.target.style.color = "white")}
-              >
+                onMouseLeave={(e) => (e.target.style.color = "white")}>
                 ABOUT
               </a>
-              <a
-                href="/contact"
-                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+              <a href="/contact" style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
                 onMouseEnter={(e) => (e.target.style.color = "grey")}
-                onMouseLeave={(e) => (e.target.style.color = "white")}
-              >
+                onMouseLeave={(e) => (e.target.style.color = "white")}>
                 CONTACT
               </a>
             </div>

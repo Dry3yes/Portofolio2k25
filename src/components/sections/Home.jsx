@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Scrolling Text Double (UI/UX & Web Developer)
 const ScrollingTextDouble = () => {
   const text1 = "UI/UX DESIGNER • WEB DEVELOPER • UI/UX DESIGNER • WEB DEVELOPER";
   const text2 = "UI/UX DESIGNER • WEB DEVELOPER • UI/UX DESIGNER • WEB DEVELOPER";
@@ -77,6 +78,7 @@ const ScrollingTextDouble = () => {
   );
 };
 
+// Scrolling Tech Images
 const ScrollingTechImages = () => {
   const techLogos = [
     { src: "/Laravel.png", alt: "Laravel" },
@@ -125,43 +127,63 @@ const ScrollingTechImages = () => {
   );
 };
 
-const ProjectCard = ({ title, description, year }) => (
-  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
+// Project Card pakai gambar
+const ProjectCard = ({ title, description, year, image, path }) => {
+  const navigate = useNavigate();
+
+  return (
     <div
       style={{
-        backgroundColor: "#1a1a1a",
-        border: "1px solid #333",
-        borderRadius: "12px",
-        padding: "2rem",
-        transition: "all 0.3s",
-        cursor: "pointer",
-        minHeight: "200px",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
+        flexDirection: "column",
+        gap: "1rem",
+        cursor: "pointer",
       }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-5px)";
-        e.currentTarget.style.borderColor = "#555";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.borderColor = "#333";
-      }}
+      onClick={() => navigate(path)}
     >
-      <h3 style={{ fontSize: "2.8rem", fontWeight: "bold", color: "white", textAlign: "center" }}>
-        {title}
-      </h3>
-    </div>
+      <div
+        style={{
+          backgroundColor: "#1a1a1a",
+          border: "1px solid #333",
+          borderRadius: "12px",
+          padding: "1rem",
+          transition: "all 0.3s",
+          minHeight: "220px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-5px)";
+          e.currentTarget.style.borderColor = "#555";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.borderColor = "#333";
+        }}
+      >
+        <img
+          src={image}
+          alt={title}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            borderRadius: "8px",
+          }}
+        />
+      </div>
 
-    <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-      <p style={{ color: "#9ca3af", fontSize: "0.9rem", margin: 0 }}>{description}</p>
-      <span style={{ color: "#666", fontSize: "0.9rem" }}>{year}</span>
+      <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+        <p style={{ color: "#9ca3af", fontSize: "0.9rem", margin: 0 }}>{description}</p>
+        <span style={{ color: "#666", fontSize: "0.9rem" }}>{year}</span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
+// Home Component
 const Home = () => {
   const [timeJakarta, setTimeJakarta] = useState("");
   const navigate = useNavigate();
@@ -178,8 +200,34 @@ const Home = () => {
   }, []);
 
   const projects = [
-    { title: "foodhub", description: "Foodhub Website For Ordering Food", year: "2025" },
-    { title: "Willify", description: "Willify Website", year: "2025" },
+    {
+      title: "Foodhub",
+      description: "Foodhub Website For Ordering Food",
+      year: "2025",
+      image: "/Foodhub.png",
+      path: "/projects/foodhub",
+    },
+    {
+      title: "Willify",
+      description: "Willify Website",
+      year: "2025",
+      image: "/Willify.png",
+      path: "/projects/willify",
+    },
+     {
+      title: "Tokohappy",
+      description: "Website UI/UX Tokohappy Design",
+      year: "2024",
+      image: "/Tokohappy.png",
+      path: "/",
+    },
+     {
+      title: "Crypcell",
+      description: "Mobile UI/UX Design",
+      year: "2024",
+      image: "/Crypto.png",
+      path: "/",
+    },
   ];
 
   const buttonStyle = {
@@ -373,7 +421,7 @@ const Home = () => {
               marginBottom: "3rem",
             }}
           >
-            {projects.concat(projects).map((project, index) => (
+            {projects.map((project, index) => (
               <ProjectCard key={index} {...project} />
             ))}
           </div>
