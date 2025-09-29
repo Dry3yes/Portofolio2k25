@@ -1,7 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Foodhub = () => {
+  const navigate = useNavigate();
+
+  const buttonStyle = {
+    backgroundColor: "transparent",
+    border: "1px solid #666",
+    padding: "1rem 2.5rem",
+    borderRadius: "50px",
+    fontSize: "1rem",
+    fontWeight: "500",
+    transition: "all 0.3s",
+    cursor: "pointer",
+    color: "white",
+  };
+
   return (
     <div
       style={{
@@ -48,18 +62,21 @@ const Foodhub = () => {
 
       {/* Project Preview */}
       <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
-        <img
-          src="/Foodhub.png"
-          alt="Foodhub Project"
-          style={{
-            width: "100%",
-            maxWidth: "800px",
-            borderRadius: "12px",
-            border: "1px solid #333",
-            marginBottom: "2rem",
-          }}
-        />
-      </div>
+         <video
+    src="/foodhub.mp4"
+    autoPlay
+    loop
+    muted
+    playsInline
+    style={{
+      width: "100%",
+      maxWidth: "800px",
+      borderRadius: "12px",
+      border: "1px solid #333",
+      marginBottom: "2rem",
+    }}
+  />
+</div>
 
       {/* Project Info */}
       <div
@@ -82,13 +99,13 @@ const Foodhub = () => {
         </h2>
         <p>
           Foodhub is a team project where I took on multiple roles as a{" "}
-          <span style={{ color: "red" }}>Developer</span>,{" "}
+          <span style={{ color: "red" }}>Developer [FRONTEND]</span>,{" "}
           <span style={{ color: "red" }}>UI/UX Designer</span>, and{" "}
           <span style={{ color: "red" }}>Project Manager</span>. I was
           responsible for choosing the technologies we used, including{" "}
-          <span style={{ color: "blue" }}>React.js</span> for the frontend and{" "}
-          <span style={{ color: "blue" }}>C#</span> for the backend styled with{" "}
-          <span style={{ color: "blue" }}>CSS</span>. Through this project, I
+          <span style={{ color: "rgba(0, 128, 255, 1)" }}>React.js</span> for the frontend and{" "}
+          <span style={{ color: "rgba(0, 128, 255, 1)" }}>C#</span> for the backend styled with{" "}
+          <span style={{ color: "rgba(0, 128, 255, 1)" }}>CSS</span>. Through this project, I
           not only strengthened my skills in UI/UX design and frontend
           development, but also gained valuable experience in managing a project
           as a PM, ensuring a good user experience and interface for the
@@ -113,8 +130,8 @@ const Foodhub = () => {
               padding: "0.8rem 2rem",
               border: "1px solid white",
               borderRadius: "50px",
-              backgroundColor: "white", // default putih
-              color: "black", // teks hitam
+              backgroundColor: "white",
+              color: "black",
               fontWeight: "bold",
               cursor: "pointer",
               textDecoration: "none",
@@ -165,13 +182,7 @@ const Foodhub = () => {
       </div>
 
       {/* Footer */}
-      <footer
-        style={{
-          borderTop: "1px solid #333",
-          marginTop: "6rem",
-          padding: "3rem 2rem 2rem",
-        }}
-      >
+      <footer id="contact" style={{ borderTop: "1px solid white", padding: "4rem 2rem 2rem", marginTop : "150px" }}>
         <div
           style={{
             maxWidth: "1200px",
@@ -183,79 +194,64 @@ const Foodhub = () => {
           }}
         >
           <div>
-            <h2
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-                marginBottom: "1rem",
-              }}
-            >
+            <h2 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1rem", color: "white" }}>
               Drop Me a Message
             </h2>
-            <Link
-              to="/contact"
-              style={{
-                backgroundColor: "transparent",
-                border: "1px solid white",
-                color: "white",
-                padding: "0.8rem 2rem",
-                borderRadius: "50px",
-                cursor: "pointer",
-                fontSize: "0.9rem",
-                transition: "all 0.3s",
-                textDecoration: "none",
-                display: "inline-block",
-              }}
+            <button
+              style={buttonStyle}
+              onClick={() => navigate("/contact")}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = "white";
                 e.target.style.color = "black";
+                e.target.style.borderColor = "white";
               }}
               onMouseLeave={(e) => {
                 e.target.style.backgroundColor = "transparent";
                 e.target.style.color = "white";
+                e.target.style.borderColor = "#666";
               }}
             >
               CONTACT ME ↗
-            </Link>
+            </button>
           </div>
 
           <div>
-            <h3
-              style={{
-                fontSize: "2rem",
-                fontWeight: "bold",
-                marginBottom: "1rem",
-              }}
-            >
+            <h3 style={{ fontSize: "3rem", fontWeight: "600", marginBottom: "1.5rem", color: "white" }}>
               MENU
             </h3>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-                textAlign: "right",
-              }}
-            >
-              {["HOME", "PROJECTS", "ABOUT", "CONTACT"].map((item, i) => {
-                const path = item === "HOME" ? "/" : `/${item.toLowerCase()}`;
-                return (
-                  <Link
-                    key={i}
-                    to={path}
-                    style={{
-                      fontSize: "1.2rem",
-                      textDecoration: "none",
-                      color: "white",
-                      transition: "color 0.3s",
-                    }}
-                    onMouseEnter={(e) => (e.target.style.color = "grey")}
-                    onMouseLeave={(e) => (e.target.style.color = "white")}
-                  >
-                    {item}
-                  </Link>
-                );
-              })}
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <a
+                href="/"
+                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+                onMouseEnter={(e) => (e.target.style.color = "grey")}
+                onMouseLeave={(e) => (e.target.style.color = "white")}
+              >
+                HOME
+              </a>
+              <a
+                href="/projects"
+                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+                onMouseEnter={(e) => (e.target.style.color = "grey")}
+                onMouseLeave={(e) => (e.target.style.color = "white")}
+              >
+                PROJECTS
+              </a>
+              <a
+                href="/about"
+                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+                onMouseEnter={(e) => (e.target.style.color = "grey")}
+                onMouseLeave={(e) => (e.target.style.color = "white")}
+              >
+                ABOUT
+              </a>
+              <a
+                href="/contact"
+                style={{ color: "white", textDecoration: "none", fontSize: "1.8rem", textAlign: "right" }}
+                onMouseEnter={(e) => (e.target.style.color = "grey")}
+                onMouseLeave={(e) => (e.target.style.color = "white")}
+              >
+                CONTACT
+              </a>
             </div>
           </div>
         </div>
@@ -265,12 +261,12 @@ const Foodhub = () => {
             textAlign: "center",
             marginTop: "3rem",
             paddingTop: "2rem",
-            borderTop: "1px solid #333",
+            borderTop: "1px solid white",
             color: "white",
             fontSize: "0.875rem",
           }}
         >
-          Coding with MIKOLAS © 2025
+          Made by Mikolas © 2025
         </div>
       </footer>
     </div>

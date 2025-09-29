@@ -9,7 +9,6 @@ html, body {
   scroll-behavior: auto; 
 }
 
-/* Animasi custom */
 @layer utilities {
   @keyframes blink {
     0%, 100% {
