@@ -36,7 +36,7 @@ function AnimatedRoutes() {
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
         <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
         <Route path="/projects/foodhub" element={<PageWrapper><Foodhub /></PageWrapper>} />
-        <Route path="/projects/willify" element={<PageWrapper><Willify /></PageWrapper>} /> {/* ✅ Route Willify */}
+        <Route path="/projects/willify" element={<PageWrapper><Willify /></PageWrapper>} /> 
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
