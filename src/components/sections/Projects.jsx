@@ -118,13 +118,13 @@ const Projects = () => {
       title: "Willify",
       description: "Willify Music Streaming Website",
       year: "2023",
-      image: "Willify.png",
+      image: "Willify.jpg",
       link: "/projects/willify",
     },
     {
       title: "NFT - Private",
       description:
-        "This is one of my private NFT artworks. I only showcase the visual part here, while the blockchain details remain private.",
+        "Dryeyes A pixel art character I created using LibreSprite and Photoshop as part of my learning process to develop skills in pixel art creation and visual design.",
       year: "2024",
       image: "/NFT.png",
     },
@@ -139,6 +139,31 @@ const Projects = () => {
       description: "Mobile App UI/UX Design",
       year: "2024",
       image: "/Crypto.png",
+    },
+    {
+      title: "Strovane",
+      description: "I'm learning to build a Fashion E-Commerce Website UI/UX and turn it into a real project using Laravel (PHP)",
+      year: "2025",
+      image: "/3.jpg",
+    },
+     {
+      title: "UI/UX Design For LinkAja",
+      description: "Designed and built the UI/UX for LinkAja, a digital financial app.",
+      year: "2025",
+      image: "/LinkAJA.png",
+    },
+    {
+      title: "Covale Design",
+      description: "I designed the brand identity and visual concept for my personal beverage project, Covale.",
+      year: "2025",
+      image: "/GraphicDesign.jpg",
+    },
+
+     {
+      title: "Quest Hackton Backend Challenge — TPM Team Technoscane Submission",
+      description: "QuestisaHacktonprojectcreatedfor BNCC Technoscape,developedthrough cross-rolecollaboration between TPM (Technical Product Management), UI/UX Designers, Front-End Developers, and Back-End Developers.",
+      year: "2025",
+      image: "/TPM.jpg",
     },
   ];
 
