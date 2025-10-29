@@ -122,7 +122,7 @@ const Projects = () => {
       link: "/projects/willify",
     },
     {
-      title: "NFT - Private",
+      title: "PixelArt",
       description:
         "Dryeyes A pixel art character I created using LibreSprite and Photoshop as part of my learning process to develop skills in pixel art creation and visual design.",
       year: "2024",
@@ -176,7 +176,7 @@ const Projects = () => {
     {
       title: "UDEMY - Software Tester Certificate",
       year: "2025",
-      image: "/SOON.png",
+      image: "/SofwarTester.jpg",
     },
   ];
 
